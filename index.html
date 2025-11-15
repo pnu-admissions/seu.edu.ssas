@@ -98,6 +98,9 @@ async function fileToBase64(file){
   });
 }
 
+// الرابط النهائي للـ Google Apps Script
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-Bh3lmARxsPDRPIbvI1tQ9q-cNTPZqd8uQiL7XQaMTjHrH5VAEutac5r_I7CqeWJe/exec';
+
 // إرسال نموذج التسجيل
 document.getElementById('registrationForm').addEventListener('submit',function(e){
 e.preventDefault();
@@ -126,7 +129,7 @@ async function sendData(){
       }
     };
 
-    const response = await fetch('https://script.google.com/macros/s/AKfycbzNtKHU4fX9d3cw2iBpucixAyWgo4F91K4IxJGoveVT51Mh_w5TXXyP49d8gt-J-TYa/exec',{
+    const response = await fetch(GOOGLE_SCRIPT_URL,{
       method:'POST',
       body: JSON.stringify(data),
       headers:{'Content-Type':'application/json'}
@@ -163,6 +166,9 @@ if(!payerName || !payerAccount || !paymentDate || !receiptFile){
 
 // إرسال الدفع إلى نفس Web App
 const data = {
+  payerName,
+  payerAccount,
+  paymentDate,
   receiptFile: {
     filename: receiptFile.name,
     mimeType: receiptFile.type,
@@ -170,7 +176,7 @@ const data = {
   }
 };
 
-fetch('https://script.google.com/macros/s/AKfycbzNtKHU4fX9d3cw2iBpucixAyWgo4F91K4IxJGoveVT51Mh_w5TXXyP49d8gt-J-TYa/exec',{
+fetch(GOOGLE_SCRIPT_URL,{
   method:'POST',
   body: JSON.stringify(data),
   headers:{'Content-Type':'application/json'}
@@ -186,4 +192,4 @@ fetch('https://script.google.com/macros/s/AKfycbzNtKHU4fX9d3cw2iBpucixAyWgo4F91K
 </script>
 
 </body>
-</html>
+  </html>
